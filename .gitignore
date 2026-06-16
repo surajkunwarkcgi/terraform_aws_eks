@@ -1,0 +1,107 @@
+# ==============================================================================
+# 1. AWS & CLOUD CREDENTIALS (CRITICAL SECURITY)
+# ==============================================================================
+# Never push local AWS CLI credentials, profiles, or config keys
+.aws/
+credentials
+credentials.json
+*.csv
+*access_key*
+*secret_key*
+
+# ==============================================================================
+# 2. PRIVATE KEYS, CERTIFICATES & TOKENS (SECURITY)
+# ==============================================================================
+# Block all asymmetric private keys and transport certificates
+*.pem
+*.key
+*.pub
+*.id_rsa
+*.crt
+*.p12
+*.pfx
+
+# ==============================================================================
+# 3. TERRAFORM & INFRASTRUCTURE AS CODE
+# ==============================================================================
+# Local execution files and downloaded provider binaries
+**/.terraform/*
+
+# Plaintext local state history (Use S3/DynamoDB backends instead)
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+
+# Block variables that contain live secrets/passwords
+*.tfvars
+*.tfvars.json
+
+# Ignore temporary local plan exports
+*tfplan*
+
+# Local override files for testing adjustments
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# ==============================================================================
+# 4. KUBERNETES & DOCKER ARTIFACTS
+# ==============================================================================
+# Never leak EKS cluster administration configurations
+.kube/
+kubeconfig_*
+config.json
+
+# Avoid caching local Docker desktop runtime configurations
+.docker/
+
+# ==============================================================================
+# 5. RUNTIME ENVIRONMENT VARIABLES & APP SECRETS
+# ==============================================================================
+# Next.js and Flask environment configuration files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.vars
+*.env
+
+# ==============================================================================
+# 6. APPLICATION FRAMEWORKS (Next.js & Python/Flask)
+# ==============================================================================
+# Next.js build outputs and dependency directories
+node_modules/
+.next/
+out/
+build/
+.pnp
+.pnp.js
+
+# Python cache files, virtual environments, and package data
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.venv/
+venv/
+ENV/
+env/
+
+# ==============================================================================
+# 7. MACOS SYSTEM SPECIFIC (Clutter Clean up)
+# ==============================================================================
+# Stop Mac hidden indexing files from corrupting git history
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
